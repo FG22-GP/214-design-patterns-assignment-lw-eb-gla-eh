@@ -4,16 +4,18 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
+#include "ConstValues.h"
+
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 768;
-
-const char* pikachuImagePath{ "img/pikachu.png" };
+// const int SCREEN_WIDTH = 1024;
+// const int SCREEN_HEIGHT = 768;
+//
+// const char* pikachuImagePath{ "img/pikachu.png" };
 
 int main(int argc, char* args[])
 {
-
+	
 	//The window we'll be rendering to
 	SDL_Window* window{};
 	SDL_Renderer* renderer; // the window's rendering surface
@@ -38,7 +40,6 @@ int main(int argc, char* args[])
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 		return -1;
 	}
-
 	// Create Window and Renderer
 	SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &window, &renderer);
 	if (!window)
@@ -46,10 +47,8 @@ int main(int argc, char* args[])
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return -1;
 	}
-
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");  // make the scaled rendering look smoother.
 	SDL_RenderSetLogicalSize(renderer, 1024, 768);
-
 	// All data related to pikachu
 	SDL_Texture* pikachu = NULL; // The final optimized image
 	bool pikachuMoveRight = false;

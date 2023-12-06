@@ -27,9 +27,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConstValues.cpp" />
     <ClCompile Include="game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConstValues.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
