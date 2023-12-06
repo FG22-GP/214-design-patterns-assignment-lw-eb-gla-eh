@@ -1,5 +1,5 @@
 #pragma once
-#include "Image.h"
+#include "RE_Image.h"
 #include <memory>
 
 extern class IImageLoader;
@@ -19,9 +19,9 @@ public:
 	Window(int width, int height, IImageLoader* imageLoader);
 	~Window();
 	bool wasSuccessful() { return success; }
-	void render(Image* image);
+	void render(RE_Image* image);
 	void clear();
 	void present();
-	std::unique_ptr<Image> loadImage(const char* path);
+	std::unique_ptr<RE_Image> loadImage(const char* path);
 };
 
