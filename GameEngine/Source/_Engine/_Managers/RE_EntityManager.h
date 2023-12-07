@@ -8,8 +8,8 @@ class RE_EntityManager
 {
 public:
     RE_EntityManager(RE_RenderHandler* Renderer);
-    void CreateEntity(RE_Entity* Entity);
-    void DrawEntity(RE_Entity* Entity);
+    void Start();
+    void UpdateEntities() const;
 
 public:
     std::vector<RE_Entity*> Entities;

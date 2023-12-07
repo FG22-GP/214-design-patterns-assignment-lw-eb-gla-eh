@@ -176,6 +176,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Source\_Engine\Interfaces\INeedToRender.cpp" />
+    <ClCompile Include="Source\_Engine\ObserverPattern\RE_DelegateBase.cpp" />
+    <ClCompile Include="Source\_Engine\ObserverPattern\ObserverPattern.cpp" />
     <ClCompile Include="Source\_Engine\RE_ApplicationHandler.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -476,12 +478,14 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Source\_Game\RE_PickachuEntity.cpp" />
+    <ClCompile Include="Source\_Game\RE_Grid.cpp" />
     <ClCompile Include="Source\_Game\RE_Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ConstValues.h" />
     <ClInclude Include="Source\_Engine\Interfaces\INeedToRender.h" />
+    <ClInclude Include="Source\_Engine\ObserverPattern\RE_DelegateBase.h" />
+    <ClInclude Include="Source\_Engine\ObserverPattern\ObserverPattern.h" />
     <ClInclude Include="Source\_Engine\RE_ApplicationHandler.h" />
     <ClInclude Include="Source\_Engine\RE_GameLoop.h" />
     <ClInclude Include="Source\_Engine\Helpers\RE_Helpers.h" />
@@ -491,7 +495,7 @@
     <ClInclude Include="Source\_Engine\_Managers\RE_EntityManager.h" />
     <ClInclude Include="Source\_Engine\_Managers\RE_RawInputManager.h" />
     <ClInclude Include="Source\_Engine\_Managers\RE_RenderHandler.h" />
-    <ClInclude Include="Source\_Game\RE_PickachuEntity.h" />
+    <ClInclude Include="Source\_Game\RE_Grid.h" />
     <ClInclude Include="Source\_Game\RE_Snake.h" />
   </ItemGroup>
   <ItemGroup>

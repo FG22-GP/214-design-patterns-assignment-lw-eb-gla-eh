@@ -1,6 +1,7 @@
 ﻿#pragma once
-#include "../_Game/RE_PickachuEntity.h"
+#include "RE_GameLoop.h"
 #include "_Managers/RE_EntityManager.h"
+#include "_Managers/RE_RawInputManager.h"
 #include "_Managers/RE_RenderHandler.h"
 
 class RE_EntityManager;
@@ -18,9 +19,9 @@ private:
     void CreateWindow();
     void CreateGame();
     void RunGame();
-    void GetInputs();
 private:
     RE_RenderHandler RenderHandler;
     RE_EntityManager EntityManager;
-    RE_PickachuEntity PickaPicka;
+    RE_RawInputManager InputManager;
+    RE_GameLoop GameLoop;
 };

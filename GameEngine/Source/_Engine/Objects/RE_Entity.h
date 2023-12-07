@@ -15,6 +15,7 @@ public:
     virtual void Update(){};
     virtual void Draw(SDL_Renderer* Renderer) override;
 public:
+    
     RE_Image Image;
     Vector Position;
 };
