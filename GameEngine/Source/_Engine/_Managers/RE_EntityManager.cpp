@@ -20,9 +20,6 @@ void RE_EntityManager::CreateEntity(RE_Entity* Entity)
 void RE_EntityManager::DrawEntity(RE_Entity* Entity)
 {
     SDL_Surface* loadedSurface = IMG_Load("img/pikachu.png");
-
     Entity->Image.Texture = SDL_CreateTextureFromSurface(RenderHandler->GetRenderer(), loadedSurface);
-    
     SDL_RenderCopy(RenderHandler->GetRenderer(), Entity->Image.Texture, NULL, &Entity->Image.Rect);
-
 }

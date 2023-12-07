@@ -11,7 +11,7 @@ public:
     void CreateEntity(RE_Entity* Entity);
     void DrawEntity(RE_Entity* Entity);
 
-private:
+public:
     std::vector<RE_Entity*> Entities;
     RE_RenderHandler* RenderHandler;
 };

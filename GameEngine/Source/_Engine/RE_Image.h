@@ -13,8 +13,7 @@ public:
         Rect.x = Position.X;
         Rect.y = Position.Y;
     }
-public:
-    void Draw();
+
 public:
     SDL_Texture* Texture;
     SDL_Rect Rect{0,0,100,100};

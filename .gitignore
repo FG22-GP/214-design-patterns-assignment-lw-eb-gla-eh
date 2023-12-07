@@ -403,3 +403,4 @@ FodyWeavers.xsd
 
 # Mac-specific
 *.DS_Store
+.idea/*
