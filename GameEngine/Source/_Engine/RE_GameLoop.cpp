@@ -21,11 +21,8 @@ void RE_GameLoop::Start()
         return;
     }
     EntityManager->Start();
-    RE_DelegateMember1<RE_GameLoop,int,void> Name(this,&RE_GameLoop::TestFunctionWithOutDelegaet);
-    RE_DelegateMember1<RE_GameLoop,int,void> Name2(this,&RE_GameLoop::TestFunctionWithOutDelegaet2);
 
-    InputManager->TestDelegate+= Name;
-    InputManager->TestDelegate+= Name2;
+    InputManager->TestDelegate+= RE_DelegateMember1(this,&RE_GameLoop::TestFunctionWithOutDelegaet);
     Update();
 }
 
