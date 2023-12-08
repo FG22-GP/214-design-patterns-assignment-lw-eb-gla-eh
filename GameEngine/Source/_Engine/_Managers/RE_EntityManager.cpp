@@ -5,18 +5,27 @@
 
 #include "RE_RenderHandler.h"
 #include "../../_Game/RE_Grid.h"
+#include "../../_Game/RE_Snake.h"
 #include "../Objects/RE_Entity.h"
 
 
-RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer)
+RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer,RE_RawInputManager* InInputManager)
 {
     RenderHandler = Renderer;
+    InputManager = InInputManager;
 }
 
 void RE_EntityManager::Start()
 {
-    RE_Grid* Grid = new RE_Grid();
-    Entities.push_back(Grid);
+    //RE_Grid* Grid = new RE_Grid();
+    
+    Entities.push_back(&Grid);
+    Entities.push_back(&Snake);
+    for (auto Entity : Entities)
+    {
+        Entity->Initialize(InputManager);
+        Entity->Start();
+    }
 }
 
 void RE_EntityManager::Update(float DeltaTime) const
@@ -31,6 +40,7 @@ void RE_EntityManager::Update(float DeltaTime) const
 
 void RE_EntityManager::FixedUpdate(float DeltaTime)
 {
+        printf("Fixed Update\n");
     for (const auto Entity : Entities)
     {
         Entity->FixedUpdate();

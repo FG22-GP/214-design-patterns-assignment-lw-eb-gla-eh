@@ -32,12 +32,12 @@ void RE_GameLoop::Update()
     while (!InputManager->ShouldQuit(Event))
     {
         float DeltaTime = CalculateDeltaTime();
+        RenderHandler->ClearRender();
 
-        RenderHandler->RenderStuff();
         InputManager->RegisterInput();
         FixedUpdate(DeltaTime);
         EntityManager->Update(DeltaTime);
-        RenderHandler->ClearRender();
+        RenderHandler->RenderStuff();
     }
 }
 
@@ -59,7 +59,7 @@ float RE_GameLoop::CalculateDeltaTime()
 
 bool RE_GameLoop::ShouldRunFixedUpdate()
 {
-    if (TimeSinceLastFixedUpdate <60.f)
+    if (TimeSinceLastFixedUpdate >=1.f)
     {
         TimeSinceLastFixedUpdate = 0;
         return true;

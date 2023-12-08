@@ -20,6 +20,7 @@ public:
 struct Color
 {
 public:
+    Color(){};
     Color(const Uint8 InR, const Uint8 InG, const Uint8 InB, const Uint8 InAlpha)
     {
         R = InR;

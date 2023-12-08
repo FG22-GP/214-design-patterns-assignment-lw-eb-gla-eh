@@ -22,12 +22,15 @@ void RE_RenderHandler::CreateWindow()
 
 void RE_RenderHandler::RenderStuff()
 {
+    SDL_RenderPresent(Renderer);
 
 }
 
 void RE_RenderHandler::ClearRender()
 {
-    SDL_RenderPresent(Renderer);
+    SDL_RenderClear(Renderer);
+    DrawBackground(Color(0  , 143, 50, 255));
+
 }
 
 

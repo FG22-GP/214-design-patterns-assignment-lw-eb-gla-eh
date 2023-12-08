@@ -9,11 +9,11 @@ void RE_RawInputManager::RegisterInput()
 	const Uint8* keystate = SDL_GetKeyboardState(NULL);
 	if (keystate[SDL_SCANCODE_W])
 	{
-		MoveInput.Y = 1;
+		MoveInput.Y = -1;
 	}
 	else if (keystate[SDL_SCANCODE_S])
 	{
-		MoveInput.Y = -1;
+		MoveInput.Y = 1;
 	}
 	else
 	{
@@ -32,6 +32,7 @@ void RE_RawInputManager::RegisterInput()
 	{
 		MoveInput.X = 0;
 	}
+	OnMoveInputUpdated.BroadCast(MoveInput);
 }
 
 bool RE_RawInputManager::ShouldQuit(SDL_Event& e)

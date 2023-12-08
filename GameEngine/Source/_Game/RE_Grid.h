@@ -8,6 +8,6 @@ public:
 private:
     void DrawGrid(SDL_Renderer* Renderer);
 private:
-    int GridCellSize = 50;
+    
     Color GridColor{255, 0, 0, 255};
 };
