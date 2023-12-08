@@ -11,6 +11,7 @@ public:
     RE_GameLoop(RE_RenderHandler* RenderHandler, RE_EntityManager* EntityManager, RE_RawInputManager* InputManager);
     void Start();
     void Update();
+    void FixedUpdate();
     void TestFunctionWithOutDelegaet(int Number);
     void TestFunctionWithOutDelegaet2(int Number);
 

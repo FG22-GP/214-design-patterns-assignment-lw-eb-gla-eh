@@ -30,27 +30,21 @@ void RE_GameLoop::Start()
 
 void RE_GameLoop::Update()
 {
-    SDL_Event e; bool quit = false;
-    
-    while (quit == false)
+    SDL_Event Event;
+    while (!InputManager->ShouldQuit(Event))
     {
+        SDL_GetTicks();
         RenderHandler->RenderStuff();
         EntityManager->UpdateEntities();
         InputManager->RegisterInput();
-        
-        while (SDL_PollEvent(&e))
-        {
-            // check, if it's an event we want to react to:
-            switch (e.type) {
-                case SDL_QUIT: {
-                        quit = true;
-                } break;
-            } 
-        }
-        
         SDL_Delay(0);
         RenderHandler->ClearRender();
     }
+}
+
+void RE_GameLoop::FixedUpdate()
+{
+    
 }
 
 void RE_GameLoop::TestFunctionWithOutDelegaet(int Number)
