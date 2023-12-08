@@ -14,7 +14,7 @@ RE_RenderHandler::RE_RenderHandler()
 void RE_RenderHandler::CreateWindow()
 {
     int imgFlags = IMG_INIT_PNG;
-    SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &Window, &Renderer);
+    SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN, &Window, &Renderer);
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(Renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
     DrawBackground(Color(0  , 143, 50, 255));
