@@ -32,7 +32,4 @@ void RE_RawInputManager::RegisterInput()
     {
         MoveInput.Y = 0;
     }
-    int Number = 5;
-
-    TestDelegate.BroadCast(Number);
 }

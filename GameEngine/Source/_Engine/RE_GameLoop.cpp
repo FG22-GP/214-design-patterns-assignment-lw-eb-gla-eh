@@ -1,5 +1,6 @@
 ﻿#include "RE_GameLoop.h"
 
+#include <SDL_events.h>
 #include <SDL_render.h>
 #include <SDL_timer.h>
 
@@ -23,17 +24,31 @@ void RE_GameLoop::Start()
     EntityManager->Start();
 
     InputManager->TestDelegate+= RE_DelegateMember1(this,&RE_GameLoop::TestFunctionWithOutDelegaet);
+    
     Update();
 }
 
 void RE_GameLoop::Update()
 {
-    while (true)
+    SDL_Event e; bool quit = false;
+    
+    while (quit == false)
     {
         RenderHandler->RenderStuff();
         EntityManager->UpdateEntities();
         InputManager->RegisterInput();
-        SDL_Delay(2000);
+        
+        while (SDL_PollEvent(&e))
+        {
+            // check, if it's an event we want to react to:
+            switch (e.type) {
+                case SDL_QUIT: {
+                        quit = true;
+                } break;
+            } 
+        }
+        
+        SDL_Delay(1000);
         RenderHandler->ClearRender();
     }
 }
