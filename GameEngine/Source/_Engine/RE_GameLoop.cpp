@@ -48,7 +48,7 @@ void RE_GameLoop::Update()
             } 
         }
         
-        SDL_Delay(1000);
+        SDL_Delay(0);
         RenderHandler->ClearRender();
     }
 }
