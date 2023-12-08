@@ -32,12 +32,10 @@ void RE_RawInputManager::RegisterInput()
 	{
 		MoveInput.X = 0;
 	}
-	TestDelegate.BroadCast(MoveInput.X);
 }
 
 bool RE_RawInputManager::ShouldQuit(SDL_Event& e)
 {
-
 	while (SDL_PollEvent(&e))
 	{
 		// check, if it's an event we want to react to:

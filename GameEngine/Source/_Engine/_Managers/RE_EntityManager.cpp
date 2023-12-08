@@ -15,17 +15,24 @@ RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer)
 
 void RE_EntityManager::Start()
 {
-    //Create snake and first apple.
     RE_Grid* Grid = new RE_Grid();
     Entities.push_back(Grid);
 }
 
-
-void RE_EntityManager::UpdateEntities() const
+void RE_EntityManager::Update(float DeltaTime) const
 {
     for (const auto Entity : Entities)
     {
         Entity->Update();
         Entity->Draw(RenderHandler->GetRenderer());
+    }
+}
+
+
+void RE_EntityManager::FixedUpdate(float DeltaTime)
+{
+    for (const auto Entity : Entities)
+    {
+        Entity->FixedUpdate();
     }
 }

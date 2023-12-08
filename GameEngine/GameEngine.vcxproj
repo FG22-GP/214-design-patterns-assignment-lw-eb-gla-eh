@@ -175,7 +175,6 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Source\_Engine\Interfaces\INeedToRender.cpp" />
     <ClCompile Include="Source\_Engine\ObserverPattern\RE_DelegateBase.cpp" />
     <ClCompile Include="Source\_Engine\RE_ApplicationHandler.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -482,7 +481,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ConstValues.h" />
-    <ClInclude Include="Source\_Engine\Interfaces\INeedToRender.h" />
     <ClInclude Include="Source\_Engine\ObserverPattern\RE_DelegateBase.h" />
     <ClInclude Include="Source\_Engine\RE_ApplicationHandler.h" />
     <ClInclude Include="Source\_Engine\RE_GameLoop.h" />
@@ -507,6 +505,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Source\_Engine\Interfaces\" />
     <Folder Include="Source\_Engine\Render\" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -6,14 +6,15 @@
 #include "../Interfaces/INeedToRender.h"
 
 
-class RE_Entity :public INeedToRender
+class RE_Entity
 {
 public:
     
     RE_Entity();
-    virtual void BeginPlay(){};
+    virtual void Start(){};
     virtual void Update(){};
-    virtual void Draw(SDL_Renderer* Renderer) override;
+    virtual void FixedUpdate(){};
+    virtual void Draw(SDL_Renderer* Renderer);
 public:
     
     RE_Image Image;

@@ -20,7 +20,6 @@ public:
 private:
     void DrawBackground(Color BackgroundColor) const;
 public:
-    std::vector<INeedToRender*> ObjectsToRender;
 private:
     SDL_Window* Window{};
     SDL_Renderer* Renderer;

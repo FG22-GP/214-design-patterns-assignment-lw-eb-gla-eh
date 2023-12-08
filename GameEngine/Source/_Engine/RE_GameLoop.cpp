@@ -22,46 +22,47 @@ void RE_GameLoop::Start()
         return;
     }
     EntityManager->Start();
-
-    InputManager->TestDelegate += RE_DelegateMember1(this, &RE_GameLoop::TestFunctionWithOutDelegaet);
-
+    
     Update();
 }
 
 void RE_GameLoop::Update()
 {
     SDL_Event Event;
-    float PosX = 0;
     while (!InputManager->ShouldQuit(Event))
     {
-        printf("Check what is SDL_GetTIcks %f + ", DeltaTime());
-        PosX+=DeltaTime();
-        printf("POSX %f\n", PosX);
+        float DeltaTime = CalculateDeltaTime();
+
         RenderHandler->RenderStuff();
-        EntityManager->UpdateEntities();
         InputManager->RegisterInput();
-        SDL_Delay(0);
+        FixedUpdate(DeltaTime);
+        EntityManager->Update(DeltaTime);
         RenderHandler->ClearRender();
     }
 }
 
-void RE_GameLoop::FixedUpdate()
+void RE_GameLoop::FixedUpdate(float DeltaTime)
 {
+    if (!ShouldRunFixedUpdate()) return;
+    EntityManager->FixedUpdate(DeltaTime);
+    
 }
 
-void RE_GameLoop::TestFunctionWithOutDelegaet(int Number)
-{
-    //printf("Print my number Senpai %i \n", Number);
-}
 
-void RE_GameLoop::TestFunctionWithOutDelegaet2(int Number)
+float RE_GameLoop::CalculateDeltaTime()
 {
-    printf("Print my number Senpai NUMBER 2 %i \n", Number);
-}
-
-float RE_GameLoop::DeltaTime()
-{
-    float DeltaTime = (SDL_GetTicks() - TimeAtLastFrame)/ 1000.0f;
+    float DeltaTime = (SDL_GetTicks() - TimeAtLastFrame) / 1000.0f;
     TimeAtLastFrame = SDL_GetTicks();
+    TimeSinceLastFixedUpdate += DeltaTime;
     return DeltaTime;
+}
+
+bool RE_GameLoop::ShouldRunFixedUpdate()
+{
+    if (TimeSinceLastFixedUpdate <60.f)
+    {
+        TimeSinceLastFixedUpdate = 0;
+        return true;
+    }
+    return false;
 }

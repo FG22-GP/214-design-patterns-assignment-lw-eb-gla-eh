@@ -9,7 +9,8 @@ class RE_EntityManager
 public:
     RE_EntityManager(RE_RenderHandler* Renderer);
     void Start();
-    void UpdateEntities() const;
+    void Update(float DeltaTime) const;
+    void FixedUpdate(float DeltaTime);
 
 public:
     std::vector<RE_Entity*> Entities;

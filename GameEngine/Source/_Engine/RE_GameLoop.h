@@ -12,14 +12,14 @@ class RE_GameLoop
 public:
     RE_GameLoop(RE_RenderHandler* RenderHandler, RE_EntityManager* EntityManager, RE_RawInputManager* InputManager);
     void Start();
-    void Update();
-    void FixedUpdate();
-    void TestFunctionWithOutDelegaet(int Number);
-    void TestFunctionWithOutDelegaet2(int Number);
-    float DeltaTime();
 
 private:
-    Uint32 TimeAtThisFrame;
+    void Update();
+    void FixedUpdate(float DeltaTime);
+    float CalculateDeltaTime();
+    bool ShouldRunFixedUpdate();
+private:
+    float TimeSinceLastFixedUpdate;
     float TimeAtLastFrame;
     RE_RenderHandler* RenderHandler;
     RE_EntityManager* EntityManager;

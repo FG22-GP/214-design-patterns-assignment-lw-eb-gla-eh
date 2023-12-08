@@ -1,16 +1,10 @@
 ﻿#include "RE_Grid.h"
-
-#include <cstdio>
-#include <SDL_ttf.h>
 #include <SDL.h>
-#include <SDL_image.h>
-
 #include "../ConstValues.h"
 
 void RE_Grid::Draw(SDL_Renderer* Renderer)
 {
     DrawGrid(Renderer);
-
 }
 
 void RE_Grid::DrawGrid(SDL_Renderer* Renderer)
@@ -23,7 +17,6 @@ void RE_Grid::DrawGrid(SDL_Renderer* Renderer)
     for (int i = 0; i < SCREEN_WIDTH; i+= GridCellSize)
     {
         SDL_RenderDrawLine(Renderer, i, 0, i, SCREEN_HEIGHT);
-
     }
 
 }

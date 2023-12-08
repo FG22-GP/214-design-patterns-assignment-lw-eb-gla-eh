@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <SDL_stdinc.h>
-
 struct RE_Helpers
 {
     //just for the name of the file

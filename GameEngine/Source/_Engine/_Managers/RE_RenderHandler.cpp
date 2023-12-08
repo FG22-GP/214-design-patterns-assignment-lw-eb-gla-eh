@@ -22,10 +22,7 @@ void RE_RenderHandler::CreateWindow()
 
 void RE_RenderHandler::RenderStuff()
 {
-    for (INeedToRender* Object : ObjectsToRender)
-    {
-        Object->Draw(Renderer);
-    }
+
 }
 
 void RE_RenderHandler::ClearRender()

@@ -3,7 +3,7 @@
 RE_Entity::RE_Entity()
 {
     
-    BeginPlay();
+    Start();
 }
 
 void RE_Entity::Draw(SDL_Renderer* Renderer)

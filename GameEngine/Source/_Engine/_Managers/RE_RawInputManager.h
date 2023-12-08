@@ -6,7 +6,6 @@
 class RE_RawInputManager
 {
 public:
-    RE_MulticastDelegate1<int> TestDelegate;
 
     void RegisterInput();
     Vector GetMoveInput() const { return MoveInput;}
