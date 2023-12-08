@@ -177,7 +177,6 @@
     </ClCompile>
     <ClCompile Include="Source\_Engine\Interfaces\INeedToRender.cpp" />
     <ClCompile Include="Source\_Engine\ObserverPattern\RE_DelegateBase.cpp" />
-    <ClCompile Include="Source\_Engine\ObserverPattern\ObserverPattern.cpp" />
     <ClCompile Include="Source\_Engine\RE_ApplicationHandler.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -485,7 +484,6 @@
     <ClInclude Include="Source\ConstValues.h" />
     <ClInclude Include="Source\_Engine\Interfaces\INeedToRender.h" />
     <ClInclude Include="Source\_Engine\ObserverPattern\RE_DelegateBase.h" />
-    <ClInclude Include="Source\_Engine\ObserverPattern\ObserverPattern.h" />
     <ClInclude Include="Source\_Engine\RE_ApplicationHandler.h" />
     <ClInclude Include="Source\_Engine\RE_GameLoop.h" />
     <ClInclude Include="Source\_Engine\Helpers\RE_Helpers.h" />

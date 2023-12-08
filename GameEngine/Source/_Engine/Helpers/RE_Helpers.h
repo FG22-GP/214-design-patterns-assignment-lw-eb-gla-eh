@@ -8,20 +8,20 @@ struct RE_Helpers
 struct Vector
 {
 public:
-    Vector(){};
-    Vector(const float InX, const float InY)
+    Vector(){}
+    Vector(const int InX, const int InY)
     {
         X=InX;
         Y =InY;
     }
 public:
-    float X,Y;
+    int X,Y;
     
 };
 struct Color
 {
 public:
-    Color(int InR, int InG, int InB, int InAlpha)
+    Color(const Uint8 InR, const Uint8 InG, const Uint8 InB, const Uint8 InAlpha)
     {
         R = InR;
         G = InG;

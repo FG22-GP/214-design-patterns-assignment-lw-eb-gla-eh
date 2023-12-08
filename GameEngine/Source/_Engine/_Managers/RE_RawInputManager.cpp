@@ -30,6 +30,7 @@ void RE_RawInputManager::RegisterInput()
     }
     else
     {
-        MoveInput.Y = 0;
+        MoveInput.X = 0;
     }
+    TestDelegate.BroadCast(MoveInput.X);
 }
