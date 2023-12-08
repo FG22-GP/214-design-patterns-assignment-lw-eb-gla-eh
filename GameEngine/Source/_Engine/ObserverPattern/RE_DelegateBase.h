@@ -46,10 +46,8 @@ public:
     //virtual RE_DelegateMember1* Clone() const { return new RE_DelegateMember1(*this); }
     virtual RE_DelegateMember1* Clone() const
     {
-        RE_DelegateMember1* ptr = new RE_DelegateMember1();
-        RE_DelegateMember1* ptr2 = new RE_DelegateMember1(*this);
-        
-        return ptr2;
+        //RE_DelegateMember1* ptr2 = new RE_DelegateMember1(*this);
+        return new RE_DelegateMember1(*this);
     }
 
     // Invoke the bound delegate function
