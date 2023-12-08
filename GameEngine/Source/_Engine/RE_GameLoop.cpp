@@ -33,7 +33,8 @@ void RE_GameLoop::Update()
     SDL_Event Event;
     while (!InputManager->ShouldQuit(Event))
     {
-        SDL_GetTicks();
+        FrameCount++;
+        printf("Check what is SDL_GetTIcks %i", DeltaTime());
         RenderHandler->RenderStuff();
         EntityManager->UpdateEntities();
         InputManager->RegisterInput();
@@ -56,4 +57,9 @@ void RE_GameLoop::TestFunctionWithOutDelegaet2(int Number)
 {
     printf("Print my number Senpai NUMBER 2 %i \n", Number);
 
+}
+
+Uint32 RE_GameLoop::DeltaTime()
+{
+    return SDL_GetTicks()/FrameCount;
 }
