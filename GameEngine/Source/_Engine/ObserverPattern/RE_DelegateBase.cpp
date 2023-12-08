@@ -15,37 +15,29 @@ void RE_MulticastDelegateBase::Clear()
 void RE_MulticastDelegateBase::operator+=(const RE_DelegateBase& NewDelegate)
 {
     InvocationNode* Node = new InvocationNode();
-    //TODO: Check if maybe not needed???
     Node->Delegate = NewDelegate.Clone();
 	
-    // First element in the list?
     if (InvocationHead == nullptr)
     {
-        // Set the head element
         InvocationHead = Node;
     }
     else
     {
-        // Iterate over list until the end of list is found
         InvocationNode* Current = InvocationHead;
         while (Current->Next != nullptr)
         {
             Current = Current->Next;
         }
-		
-        // Set the info pointer at the end of the list
         Current->Next = Node;
     }
 }
 
 void RE_MulticastDelegateBase::operator-=(const RE_DelegateBase& NewDelegate)
 {
-    // Iterate over list to find delegate to remove
     InvocationNode* Current = InvocationHead;
     InvocationNode* prev = nullptr;
     while (Current != nullptr)
     {
-        // Is this the delegate to remove?
         if (*Current->Delegate == NewDelegate)
         {
             if (Current == InvocationHead)
