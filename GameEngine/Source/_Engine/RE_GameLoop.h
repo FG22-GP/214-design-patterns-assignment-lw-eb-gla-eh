@@ -16,12 +16,11 @@ public:
     void FixedUpdate();
     void TestFunctionWithOutDelegaet(int Number);
     void TestFunctionWithOutDelegaet2(int Number);
-    Uint32 DeltaTime();
+    float DeltaTime();
 
 private:
-    Uint32 FrameCount;
-    float TimePassed;
-    float RequiredTimeForFixedUpdate;
+    Uint32 TimeAtThisFrame;
+    float TimeAtLastFrame;
     RE_RenderHandler* RenderHandler;
     RE_EntityManager* EntityManager;
     RE_RawInputManager* InputManager;
