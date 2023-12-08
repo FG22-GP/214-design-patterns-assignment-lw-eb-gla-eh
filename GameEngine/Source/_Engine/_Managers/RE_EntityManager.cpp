@@ -40,7 +40,6 @@ void RE_EntityManager::Update(float DeltaTime) const
 
 void RE_EntityManager::FixedUpdate(float DeltaTime)
 {
-        printf("Fixed Update\n");
     for (const auto Entity : Entities)
     {
         Entity->FixedUpdate();

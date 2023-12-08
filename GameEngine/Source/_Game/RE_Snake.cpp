@@ -1,7 +1,18 @@
 ﻿#include "RE_Snake.h"
 
-#include "../ConstValues.h"
 #include "../_Engine/_Managers/RE_RawInputManager.h"
+
+RE_Snake::RE_Snake()
+{
+}
+
+RE_Snake::~RE_Snake()
+{
+    for (auto& BodyPart : BodyParts)
+    {
+        delete BodyPart;
+    }
+}
 
 void RE_Snake::Initialize(RE_RawInputManager* InputManager)
 {
@@ -10,44 +21,103 @@ void RE_Snake::Initialize(RE_RawInputManager* InputManager)
 
 void RE_Snake::Start()
 {
-    MoveDirection.X = 1;
-    RE_BodyPart FirstBodyPart;
-    FirstBodyPart.Rect.h = GRID_CELL_SIZE;
-    FirstBodyPart.Rect.w =GRID_CELL_SIZE;
-    FirstBodyPart.Rect.x = GRID_CELL_SIZE * 8;
-    FirstBodyPart.Rect.y = GRID_CELL_SIZE * 6;
-    
-    BodyParts.push_back(FirstBodyPart);
+    CreateStartingBodyParts();
+
 }
 
 void RE_Snake::FixedUpdate()
 {
-    for (auto& BodyPart : BodyParts)
+    MoveSnake();
+    if (HasEatenItself())
     {
-        BodyPart.Rect.x += MoveDirection.X * GRID_CELL_SIZE;
-        BodyPart.Rect.y += MoveDirection.Y * GRID_CELL_SIZE;
+        printf("Game Over\n");
+        //Game Over;
     }
+    OnSnakeStepped.BroadCast(GetHeadPart()->CurrentPosition);
+}
+
+void RE_Snake::MoveSnake() const
+{
+    const int Size = static_cast<int>(BodyParts.size());
+    GetHeadPart()->Direction = MoveDirection;
+    GetHeadPart()->Move();
+    for (int i = Size-1; i > 0; --i)
+    {
+        BodyParts[i]->Move();
+        BodyParts[i]->Direction = BodyParts[i-1]->Direction;
+    }
+}
+
+bool RE_Snake::HasEatenItself()
+{
+    for (int i = 1; i < BodyParts.size(); ++i)
+    {
+        if (BodyParts[i]->CurrentPosition == GetHeadPart()->CurrentPosition)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void RE_Snake::Draw(SDL_Renderer* Renderer)
 {
-    SDL_SetRenderDrawColor(Renderer, 0  , 0, 255, 255);
-    for (auto& BodyPart : BodyParts)
+    //Draw body parts
+    const int Size = static_cast<int>(BodyParts.size());
+
+    RE_BodyPart* BodyPart = nullptr;
+    for (int i = Size-1; i >= 0; --i)
     {
-        SDL_RenderFillRect(Renderer,&BodyPart.Rect);
+        BodyPart = BodyParts[i];
+        if (!BodyPart) return;
+        
+        SDL_SetRenderDrawColor(Renderer, BodyPart->Color.R  , BodyPart->Color.G, BodyPart->Color.B, BodyPart->Color.Alpha);
+        SDL_RenderFillRect(Renderer,&BodyPart->Rect);
     }
+
 }
 
 void RE_Snake::UpdateMoveDirection(Vector NewMoveInput)
 {
-    if (MoveDirection.X !=0 && NewMoveInput.Y != 0)
+    //TODO: we should compare to the heads direction
+    if (GetHeadPart()->Direction.X !=0 && NewMoveInput.Y != 0)
     {
         MoveDirection.X = 0;
         MoveDirection.Y = NewMoveInput.Y;
     }
-    else if (MoveDirection.Y !=0 && NewMoveInput.X != 0)
+    else if (GetHeadPart()->Direction.Y !=0 && NewMoveInput.X != 0)
     {
         MoveDirection.Y = 0;
         MoveDirection.X = NewMoveInput.X;
     }
 }
+
+void RE_Snake::CreateStartingBodyParts()
+{
+    // CreateHeadPart
+    
+    BodyParts.push_back(new RE_BodyPart(SnakeStartPos, MoveDirection,HeadColor));
+    for (int i = 0; i < StartingSnakeSize; ++i)
+    {
+        CreateBodyPart();
+    }
+}
+
+
+void RE_Snake::CreateBodyPart()
+{
+    const RE_BodyPart& LastBodyPart = *BodyParts[BodyParts.size()-1];
+    RE_BodyPart* NewBodyPart = new RE_BodyPart(LastBodyPart);
+    if (BodyParts.size()%2 == 0)
+    {
+        NewBodyPart->Color = EvenBodyColor;
+    }
+    else
+    {
+        NewBodyPart->Color =OddBodyColor;
+    }
+    BodyParts.push_back(NewBodyPart);
+   
+}
+

@@ -15,13 +15,34 @@ public:
     }
 public:
     int X,Y;
+    bool operator==(const Vector& Other) const
+    {
+        return (X==Other.X && Y == Other.Y);
+    }
+    bool operator!=(const Vector& Other) const
+    {
+        return (X!=Other.X || Y != Other.Y);
+    }
+    // void operator=(const Vector& Other)
+    // {
+    //     X= Other.X;
+    //     Y=Other.Y;
+    // }
+
+
     
 };
 struct Color
 {
 public:
-    Color(){};
-    Color(const Uint8 InR, const Uint8 InG, const Uint8 InB, const Uint8 InAlpha)
+    Color()
+    {
+        R = 255;
+        G = 255;
+        B = 255;
+        Alpha = 255;
+    };
+    Color(const Uint8 InR, const Uint8 InG = 255, const Uint8 InB = 255, const Uint8 InAlpha = 255)
     {
         R = InR;
         G = InG;
