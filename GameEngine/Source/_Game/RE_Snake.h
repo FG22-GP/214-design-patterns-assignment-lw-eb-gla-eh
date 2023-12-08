@@ -12,7 +12,8 @@ public:
     RE_BodyPart(const Vector InCurrentPosition, Vector InDirection = {0,0}, Color InColor = {})
     {
         CurrentPosition= InCurrentPosition;
-        Rect ={GRID_CELL_SIZE * CurrentPosition.X,GRID_CELL_SIZE * CurrentPosition.Y, GRID_CELL_SIZE,GRID_CELL_SIZE};
+        const Vector WorldCoords = RE_Grid::GetMapCoordinates().GetWorldCoordinates(CurrentPosition);
+        Rect ={WorldCoords.X,WorldCoords.Y, GRID_CELL_SIZE,GRID_CELL_SIZE};
         Direction = InDirection;
         Color = InColor;
     }
@@ -26,7 +27,7 @@ public:
     {
         Rect.x+= Direction.X * GRID_CELL_SIZE;
         Rect.y+= Direction.Y * GRID_CELL_SIZE;
-        CurrentPosition ={Rect.x,Rect.y};
+        CurrentPosition ={Rect.x/GRID_CELL_SIZE,Rect.y/GRID_CELL_SIZE};
     };
     SDL_Rect Rect;
     Color Color;

@@ -5,13 +5,27 @@
 
 RE_MapCoordinates RE_Grid::MapCoordinates;
 
-Vector RE_MapCoordinates::GetWorldCoordinates(Vector GameCoordinates)
+Vector RE_MapCoordinates::GetWorldCoordinates(const Vector& GameCoordinates)const
 {
-    return {0,0};
+    const std::tuple<int, int> GameCoords = {GameCoordinates.X,GameCoordinates.Y};
+    if (!GameToWorldCoords.contains(GameCoords))
+    {
+        printf("Map does not contain such coordinates: %i, %i", GameCoordinates.X,GameCoordinates.Y);
+        return {0,0};
+    }
+    const std::tuple<int, int> WorldCoords = GameToWorldCoords.at(GameCoords);
+    
+    return {std::get<0>(WorldCoords),std::get<1>(WorldCoords)};
 }
+
+bool RE_MapCoordinates::IsOutsideTheMap(const Vector& GameCoordinates) const
+{
+    const std::tuple<int, int> GameCoords = {GameCoordinates.X,GameCoordinates.Y};
+    return !GameToWorldCoords.contains(GameCoords);
+}
+
 void RE_Grid::Start()
 {
-    int xx = 0,yy = 0;
     for (int x = 0; x < (SCREEN_WIDTH - BorderSize.X) / GRID_CELL_SIZE; ++x)
     {
         for (int y = 0; y < (SCREEN_HEIGHT- BorderSize.Y)/GRID_CELL_SIZE; ++y)
@@ -19,7 +33,6 @@ void RE_Grid::Start()
             Vector WorldCoords {x*GRID_CELL_SIZE+BorderSize.X,y*GRID_CELL_SIZE + BorderSize.Y};
             std::tuple<int,int> GameCoords (x,y);
             std::tuple<int,int> WorldCoordsTuple (WorldCoords.X,WorldCoords.Y);
-            //MapCoordinates.DOThing();
             MapCoordinates.GameToWorldCoords.insert_or_assign(GameCoords,WorldCoordsTuple);
         }
     }

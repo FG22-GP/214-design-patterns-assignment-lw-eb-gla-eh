@@ -8,7 +8,10 @@ struct RE_MapCoordinates
     //std::vector<Vector> Coordinates; 
     
     std::map<std::tuple<int,int>,std::tuple<int,int>> GameToWorldCoords;
-    Vector GetWorldCoordinates(Vector GameCoordinates);
+    Vector GetWorldCoordinates(const Vector& GameCoordinates) const;
+    bool IsOutsideTheMap(const Vector& GameCoordinates)const;
+    
+    
     
 };
 class RE_Grid : public RE_Entity

@@ -30,9 +30,14 @@ void RE_Snake::FixedUpdate()
     MoveSnake();
     if (HasEatenItself())
     {
-        printf("Game Over\n");
+        printf("Game Over: Ate yourself\n");
         //Game Over;
     }
+    if (RE_Grid::GetMapCoordinates().IsOutsideTheMap(GetHeadPart()->CurrentPosition))
+    {
+        printf("Game Over Hit The Wall\n");
+    }
+
     OnSnakeStepped.BroadCast(GetHeadPart()->CurrentPosition);
 }
 
