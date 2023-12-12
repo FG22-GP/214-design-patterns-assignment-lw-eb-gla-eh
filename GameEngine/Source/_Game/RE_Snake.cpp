@@ -1,5 +1,6 @@
 ﻿#include "RE_Snake.h"
 
+#include "RE_GameManager.h"
 #include "../_Engine/_Managers/RE_RawInputManager.h"
 
 RE_Snake::RE_Snake()
@@ -14,15 +15,17 @@ RE_Snake::~RE_Snake()
     }
 }
 
-void RE_Snake::Initialize(RE_RawInputManager* InputManager)
+void RE_Snake::Initialize(RE_SubsystemManager* SubsystemManager, RE_RawInputManager* InputManager)
 {
     InputManager->OnMoveInputUpdated+= RE_DelegateMember1(this, &RE_Snake::UpdateMoveDirection);
+    RE_GameManager GameManager = SubsystemManager->GetSubsystemOfClass<RE_GameManager>();
+    GameManager.RegisterCollider(this);
 }
 
 void RE_Snake::Start()
 {
     CreateStartingBodyParts();
-
+    
 }
 
 void RE_Snake::FixedUpdate()

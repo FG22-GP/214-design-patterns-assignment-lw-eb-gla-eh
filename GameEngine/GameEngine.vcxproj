@@ -175,6 +175,8 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Source\_Engine\Interfaces\ICollidable.cpp" />
+    <ClCompile Include="Source\_Engine\Objects\RE_SubsystemBase.cpp" />
     <ClCompile Include="Source\_Engine\ObserverPattern\RE_DelegateBase.cpp" />
     <ClCompile Include="Source\_Engine\RE_ApplicationHandler.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -477,13 +479,15 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Source\_Engine\_Managers\RE_SubsystemManager.cpp" />
-    <ClCompile Include="Source\_Game\GameManager.cpp" />
+    <ClCompile Include="Source\_Game\RE_GameManager.cpp" />
     <ClCompile Include="Source\_Game\RE_Apple.cpp" />
     <ClCompile Include="Source\_Game\RE_Grid.cpp" />
     <ClCompile Include="Source\_Game\RE_Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ConstValues.h" />
+    <ClInclude Include="Source\_Engine\Interfaces\ICollidable.h" />
+    <ClInclude Include="Source\_Engine\Objects\RE_SubsystemBase.h" />
     <ClInclude Include="Source\_Engine\ObserverPattern\RE_DelegateBase.h" />
     <ClInclude Include="Source\_Engine\RE_ApplicationHandler.h" />
     <ClInclude Include="Source\_Engine\RE_GameLoop.h" />
@@ -495,7 +499,7 @@
     <ClInclude Include="Source\_Engine\_Managers\RE_RawInputManager.h" />
     <ClInclude Include="Source\_Engine\_Managers\RE_RenderHandler.h" />
     <ClInclude Include="Source\_Engine\_Managers\RE_SubsystemManager.h" />
-    <ClInclude Include="Source\_Game\GameManager.h" />
+    <ClInclude Include="Source\_Game\RE_GameManager.h" />
     <ClInclude Include="Source\_Game\RE_Apple.h" />
     <ClInclude Include="Source\_Game\RE_Grid.h" />
     <ClInclude Include="Source\_Game\RE_Snake.h" />

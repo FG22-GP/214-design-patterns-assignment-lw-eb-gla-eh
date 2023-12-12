@@ -3,6 +3,7 @@
 
 #include "RE_Grid.h"
 #include "../ConstValues.h"
+#include "../_Engine/Interfaces/ICollidable.h"
 #include "../_Engine/Objects/RE_Entity.h"
 #include "../_Engine/ObserverPattern/RE_DelegateBase.h"
 
@@ -36,16 +37,18 @@ public:
 
 };
 
-class RE_Snake :public RE_Entity
+class RE_Snake :public RE_Entity, public ICollidable
 {
 public:
     RE_Snake();
     virtual ~RE_Snake();
-    void Initialize(RE_RawInputManager* InputManager) override;
+    void Initialize(RE_SubsystemManager* SubsystemManager,RE_RawInputManager* InputManager) override;
     void Start() override;
     void FixedUpdate() override;
     void Draw(SDL_Renderer* Renderer) override;
     void UpdateMoveDirection(Vector NewMoveInput);
+    void OnCollide(ICollidable* Other) override {printf("OnCollide");}
+    Vector GetCurrentPosition() override {return GetHeadPart()->CurrentPosition;}
 private:
     void CreateStartingBodyParts();
     void CreateBodyPart();

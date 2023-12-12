@@ -11,7 +11,7 @@ class RE_RenderHandler;
 class RE_EntityManager
 {
 public:
-    RE_EntityManager(RE_RenderHandler* Renderer,RE_RawInputManager* InInputManager);
+    RE_EntityManager(RE_RenderHandler* Renderer,RE_SubsystemManager* SubsystemManager ,RE_RawInputManager* InInputManager);
     
     void Start();
     void Update(float DeltaTime) const;
@@ -20,6 +20,7 @@ public:
 public:
     RE_RenderHandler* RenderHandler;
     RE_RawInputManager* InputManager;
+    RE_SubsystemManager* SubsystemManager;
 
 private:
     std::vector<RE_Entity*> Entities;

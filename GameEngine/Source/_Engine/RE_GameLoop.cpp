@@ -8,9 +8,10 @@
 #include "_Managers/RE_RawInputManager.h"
 #include "_Managers/RE_RenderHandler.h"
 
-RE_GameLoop::RE_GameLoop(RE_RenderHandler* RenderHandler, RE_EntityManager* EntityManager, RE_RawInputManager* InputManager): RenderHandler(RenderHandler), EntityManager(EntityManager), InputManager(InputManager)
-
+RE_GameLoop::RE_GameLoop(RE_RenderHandler* RenderHandler, RE_EntityManager* EntityManager,RE_SubsystemManager* SubsystemManager, RE_RawInputManager* InputManager):
+RenderHandler(RenderHandler), EntityManager(EntityManager), SubsystemManager(SubsystemManager), InputManager(InputManager)
 {
+    
 }
 
 void RE_GameLoop::Start()
@@ -21,6 +22,7 @@ void RE_GameLoop::Start()
         printf("Entity manager or Render handler is Null inside The gameloop");
         return;
     }
+    SubsystemManager->Start();
     EntityManager->Start();
     
     Update();
@@ -44,6 +46,7 @@ void RE_GameLoop::Update()
 void RE_GameLoop::FixedUpdate(float DeltaTime)
 {
     if (!ShouldRunFixedUpdate()) return;
+    SubsystemManager->FixedUpdate(DeltaTime);
     EntityManager->FixedUpdate(DeltaTime);
     
 }

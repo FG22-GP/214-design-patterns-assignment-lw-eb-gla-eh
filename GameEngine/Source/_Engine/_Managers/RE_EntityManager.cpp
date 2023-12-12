@@ -9,10 +9,11 @@
 #include "../Objects/RE_Entity.h"
 
 
-RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer,RE_RawInputManager* InInputManager)
+RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer,RE_SubsystemManager* SubsytemManager,RE_RawInputManager* InInputManager)
 {
     RenderHandler = Renderer;
     InputManager = InInputManager;
+    SubsystemManager = SubsytemManager;
 }
 
 void RE_EntityManager::Start()
@@ -25,7 +26,7 @@ void RE_EntityManager::Start()
     
     for (auto Entity : Entities)
     {
-        Entity->Initialize(InputManager);
+        Entity->Initialize(SubsystemManager,InputManager);
         Entity->Start();
     }
 }

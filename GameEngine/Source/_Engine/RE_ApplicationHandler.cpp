@@ -6,7 +6,7 @@
 //#include "../_Game/RE_PickachuEntity.h"
 //#include "_Managers/RE_EntityManager.h"
 
-RE_ApplicationHandler::RE_ApplicationHandler(): EntityManager(&RenderHandler, &InputManager), GameLoop(&RenderHandler,&EntityManager, &InputManager)
+RE_ApplicationHandler::RE_ApplicationHandler(): EntityManager(&RenderHandler, &SubsystemManager, &InputManager), GameLoop(&RenderHandler,&EntityManager, &SubsystemManager, &InputManager)
 {
 }
 
