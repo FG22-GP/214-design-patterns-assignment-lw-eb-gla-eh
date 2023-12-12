@@ -477,6 +477,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Source\_Game\GameManager.cpp" />
+    <ClCompile Include="Source\_Game\RE_Apple.cpp" />
     <ClCompile Include="Source\_Game\RE_Grid.cpp" />
     <ClCompile Include="Source\_Game\RE_Snake.cpp" />
   </ItemGroup>
@@ -493,6 +494,7 @@
     <ClInclude Include="Source\_Engine\_Managers\RE_RawInputManager.h" />
     <ClInclude Include="Source\_Engine\_Managers\RE_RenderHandler.h" />
     <ClInclude Include="Source\_Game\GameManager.h" />
+    <ClInclude Include="Source\_Game\RE_Apple.h" />
     <ClInclude Include="Source\_Game\RE_Grid.h" />
     <ClInclude Include="Source\_Game\RE_Snake.h" />
   </ItemGroup>
