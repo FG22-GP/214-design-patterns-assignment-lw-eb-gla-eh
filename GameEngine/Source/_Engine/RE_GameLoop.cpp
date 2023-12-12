@@ -59,7 +59,7 @@ float RE_GameLoop::CalculateDeltaTime()
 
 bool RE_GameLoop::ShouldRunFixedUpdate()
 {
-    if (TimeSinceLastFixedUpdate >=1.f)
+    if (TimeSinceLastFixedUpdate >=0.33f)
     {
         TimeSinceLastFixedUpdate = 0;
         return true;
