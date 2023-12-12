@@ -3,6 +3,7 @@
 
 #include "../../_Game/RE_Grid.h"
 #include "../../_Game/RE_Snake.h"
+#include "../../_Game/RE_Apple.h"
 
 class RE_Entity;
 class RE_RenderHandler;
@@ -24,4 +25,5 @@ public:
 private:
     RE_Grid Grid;
     RE_Snake Snake;
+    RE_Apple Apple;
 };

@@ -21,6 +21,7 @@ void RE_EntityManager::Start()
     
     Entities.push_back(&Grid);
     Entities.push_back(&Snake);
+    Entities.push_back(&Apple);
     for (auto Entity : Entities)
     {
         Entity->Initialize(InputManager);
