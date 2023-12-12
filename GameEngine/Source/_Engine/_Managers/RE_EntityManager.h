@@ -18,12 +18,9 @@ public:
     void FixedUpdate(float DeltaTime);
 
 public:
-    std::vector<RE_Entity*> Entities;
     RE_RenderHandler* RenderHandler;
     RE_RawInputManager* InputManager;
 
 private:
-    RE_Grid Grid;
-    RE_Snake Snake;
-    RE_Apple Apple;
+    std::vector<RE_Entity*> Entities;
 };

@@ -17,11 +17,12 @@ RE_EntityManager::RE_EntityManager(RE_RenderHandler* Renderer,RE_RawInputManager
 
 void RE_EntityManager::Start()
 {
-    //RE_Grid* Grid = new RE_Grid();
     
-    Entities.push_back(&Grid);
-    Entities.push_back(&Snake);
-    Entities.push_back(&Apple);
+    Entities.push_back(new RE_Grid());
+    Entities.push_back(new RE_Snake());
+    Entities.push_back(new RE_Apple());
+
+    
     for (auto Entity : Entities)
     {
         Entity->Initialize(InputManager);
