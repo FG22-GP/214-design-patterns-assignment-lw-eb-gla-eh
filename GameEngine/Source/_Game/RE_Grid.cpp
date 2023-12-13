@@ -26,9 +26,9 @@ bool RE_MapCoordinates::IsOutsideTheMap(const Vector& GameCoordinates) const
 
 void RE_Grid::Start()
 {
-    for (int x = 0; x < (SCREEN_WIDTH - BorderSize.X) / GRID_CELL_SIZE; ++x)
+    for (int x = 0; x < GRID_WIDTH; ++x)
     {
-        for (int y = 0; y < (SCREEN_HEIGHT- BorderSize.Y)/GRID_CELL_SIZE; ++y)
+        for (int y = 0; y < GRID_HEIGHT; ++y)
         {
             Vector WorldCoords {x*GRID_CELL_SIZE+BorderSize.X,y*GRID_CELL_SIZE + BorderSize.Y};
             std::tuple<int,int> GameCoords (x,y);
@@ -45,7 +45,7 @@ void RE_Grid::Draw(SDL_Renderer* Renderer)
 
 void RE_Grid::DrawGrid(SDL_Renderer* Renderer)
 {
-    SDL_SetRenderDrawColor(Renderer, GridColor.R,GridColor.G,GridColor.B,GridColor.Alpha);
+    SDL_SetRenderDrawColor(Renderer, GRID.R,GRID.G,GRID.B,GRID.Alpha);
     for (int i = BorderSize.Y; i < SCREEN_HEIGHT; i+= GRID_CELL_SIZE)
     {
         SDL_RenderDrawLine(Renderer, BorderSize.X, i, SCREEN_WIDTH, i);

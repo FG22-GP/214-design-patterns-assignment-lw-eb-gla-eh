@@ -47,7 +47,7 @@ public:
     void FixedUpdate() override;
     void Draw(SDL_Renderer* Renderer) override;
     void UpdateMoveDirection(Vector NewMoveInput);
-    void OnCollide(ICollidable* Other) override {printf("OnCollide");}
+    void OnCollide(ICollidable* Other) override;
     Vector GetCurrentPosition() override {return GetHeadPart()->CurrentPosition;}
 private:
     void CreateStartingBodyParts();
@@ -61,10 +61,7 @@ public:
 private:
     const Vector SnakeStartPos = {8,6};
     //Amount of squares for the snake in addition to the head
-    int StartingSnakeSize = 6;
+    int StartingSnakeSize = 5;
     Vector MoveDirection = {1,0};
-    Color HeadColor = {255,255,0,0};
-    Color EvenBodyColor = {255,0,255,255};
-    Color OddBodyColor = {0,0,255,255};
     std::vector<RE_BodyPart*> BodyParts;
 };

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <map>
 
+#include "../ConstValues.h"
 #include "../_Engine/Objects/RE_Entity.h"
 
 struct RE_MapCoordinates
@@ -27,6 +28,5 @@ private:
     std::map<std::tuple<int,int>,std::tuple<int,int>> GameToWorldCoords;
 
     static RE_MapCoordinates MapCoordinates;
-    Color GridColor{255, 0, 0, 255};
-    Vector BorderSize = {20,15};
+    Vector BorderSize = {GRID_WIDTH,GRID_HEIGHT};
 };

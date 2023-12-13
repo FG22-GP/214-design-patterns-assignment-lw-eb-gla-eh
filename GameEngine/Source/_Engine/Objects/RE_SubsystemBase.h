@@ -2,5 +2,7 @@
 
 class RE_SubsystemBase {
 public:
-    void FixedUpdate(float DeltaTime);
+    virtual void FixedUpdate(float DeltaTime) = 0;
+
+    virtual ~RE_SubsystemBase(){}
 };

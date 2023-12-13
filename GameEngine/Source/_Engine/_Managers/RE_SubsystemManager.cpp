@@ -4,7 +4,8 @@
 
 void RE_SubsystemManager::Start() {
 
-    SubsystemBases.push_back(new RE_GameManager);
+    RE_GameManager* NewGameManager = new RE_GameManager;
+    SubsystemBases.push_back(NewGameManager);
     
 }
 

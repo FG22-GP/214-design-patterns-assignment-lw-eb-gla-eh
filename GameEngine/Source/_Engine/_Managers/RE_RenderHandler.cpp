@@ -17,7 +17,7 @@ void RE_RenderHandler::CreateWindow()
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN, &Window, &Renderer);
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(Renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-    DrawBackground(Color(0  , 143, 50, 255));
+    DrawBackground(Color(0, 0, 0, 255));
 }
 
 void RE_RenderHandler::RenderStuff()
@@ -29,7 +29,7 @@ void RE_RenderHandler::RenderStuff()
 void RE_RenderHandler::ClearRender()
 {
     SDL_RenderClear(Renderer);
-    DrawBackground(Color(0  , 143, 50, 255));
+    DrawBackground(BACKGROUND);
 
 }
 

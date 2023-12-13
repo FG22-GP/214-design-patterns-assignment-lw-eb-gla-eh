@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <random>
 #include <SDL_stdinc.h>
 
 #include "ObserverPattern/RE_DelegateBase.h"
@@ -26,4 +27,6 @@ private:
     RE_EntityManager* EntityManager;
     RE_SubsystemManager* SubsystemManager;
     RE_RawInputManager* InputManager;
+
+    
 };

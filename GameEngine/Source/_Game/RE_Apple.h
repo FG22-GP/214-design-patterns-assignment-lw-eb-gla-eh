@@ -1,6 +1,8 @@
 #pragma once
+#include "RE_Grid.h"
 #include "../_Engine/Interfaces/ICollidable.h"
 #include "../_Engine/Objects/RE_Entity.h"
+#include "../ConstValues.h"
 
 class RE_Apple : public RE_Entity, public ICollidable{
     
@@ -15,12 +17,10 @@ public:
     Vector GetRandomGridPosition();
     void SetPosition(Vector Position)
     {
-        rect.x = Position.X;
-        rect.y = Position.Y;
         this->Position = Position;
     }
 
 private:
     Vector Position;
-    SDL_Rect rect;
+    SDL_Rect Rect;
 };

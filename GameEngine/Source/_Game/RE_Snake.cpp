@@ -18,8 +18,8 @@ RE_Snake::~RE_Snake()
 void RE_Snake::Initialize(RE_SubsystemManager* SubsystemManager, RE_RawInputManager* InputManager)
 {
     InputManager->OnMoveInputUpdated+= RE_DelegateMember1(this, &RE_Snake::UpdateMoveDirection);
-    RE_GameManager GameManager = SubsystemManager->GetSubsystemOfClass<RE_GameManager>();
-    GameManager.RegisterCollider(this);
+    RE_GameManager* GameManager = SubsystemManager->GetSubsystemOfClass<RE_GameManager>();
+    GameManager->RegisterCollider(this);
 }
 
 void RE_Snake::Start()
@@ -101,11 +101,15 @@ void RE_Snake::UpdateMoveDirection(Vector NewMoveInput)
     }
 }
 
+void RE_Snake::OnCollide(ICollidable* Other) {
+    CreateBodyPart();
+}
+
 void RE_Snake::CreateStartingBodyParts()
 {
     // CreateHeadPart
     
-    BodyParts.push_back(new RE_BodyPart(SnakeStartPos, MoveDirection,HeadColor));
+    BodyParts.push_back(new RE_BodyPart(SnakeStartPos, MoveDirection,SNAKE_HEAD));
     for (int i = 0; i < StartingSnakeSize; ++i)
     {
         CreateBodyPart();
@@ -119,11 +123,11 @@ void RE_Snake::CreateBodyPart()
     RE_BodyPart* NewBodyPart = new RE_BodyPart(LastBodyPart);
     if (BodyParts.size()%2 == 0)
     {
-        NewBodyPart->Color = EvenBodyColor;
+        NewBodyPart->Color = SNAKE_BODY_EVEN;
     }
     else
     {
-        NewBodyPart->Color =OddBodyColor;
+        NewBodyPart->Color =SNAKE_BODY_ODD;
     }
     BodyParts.push_back(NewBodyPart);
    
